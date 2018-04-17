@@ -14,7 +14,6 @@ echo "Running TC backend tests"
 FILTER_OUT=MLP_model ./test.sh
 ./build/tc/benchmarks/MLP_model --gtest_filter=-*2LUT*
 if [[ $(conda --version | wc -c) -ne 0 ]]; then
-  source activate tc-env
   echo "Running TC PyTorch tests"
   ./test_python/run_test.sh
 fi

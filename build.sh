@@ -240,7 +240,7 @@ function install_aten() {
       if should_reconfigure .. .build_cache; then
         echo "Reconfiguring ATen"
         export PYTORCH_PYTHON=${PYTHON}
-        ${CMAKE_VERSION} .. -DCMAKE_MODULE_PATH=${TC_DIR}/cmake/Modules_CUDA_fix -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX} -DHAS_C11_ATOMICS=OFF -DNO_CUDA=${ATEN_NO_CUDA}
+        ${CMAKE_VERSION} .. -DCMAKE_MODULE_PATH="${TC_DIR}/cmake;${TC_DIR}/third-party/caffe2/cmake/Modules_CUDA_fix" -DCMAKE_INSTALL_PREFIX=${INSTALL_PREFIX} -DHAS_C11_ATOMICS=OFF -DNO_CUDA=${ATEN_NO_CUDA}
       fi
       make -j $CORES -s || exit 1
 

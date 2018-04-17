@@ -355,6 +355,7 @@ def fun(float(B, R) LUT, int32(B, N) I) -> (O) {
 ///////////////////////////////////////////////////////////////////////////////
 // SpatialBatchNormalization
 ///////////////////////////////////////////////////////////////////////////////
+// TODO: https://github.com/facebookresearch/TensorComprehensions/issues/319
 TEST_F(TcCudaMapperTest, DISABLED_SpatialBatchNormalization) {
   N = 32;
   at::Tensor eps = at::CUDA(at::kFloat).rand({1});
