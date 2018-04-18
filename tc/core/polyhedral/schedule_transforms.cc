@@ -106,7 +106,8 @@ isl::union_map partialSchedule(
 // are considered to introduce additional domain points.
 isl::union_set activeDomainPoints(
     const ScheduleTree* root,
-    const ScheduleTree* node) {
+    const ScheduleTree* node,
+    bool inclusive) {
   auto domainElem = root->elemAs<ScheduleTreeElemDomain>();
   CHECK(domainElem) << "root must be a Domain node" << *root;
 
@@ -115,7 +116,11 @@ isl::union_set activeDomainPoints(
     return domain;
   }
 
-  for (auto anc : node->ancestors(root)) {
+  auto ancestors = node->ancestors(root);
+  if (inclusive) {
+    ancestors.emplace_back(node);
+  }
+  for (auto anc : ancestors) {
     if (auto filterElem = anc->elemAsBase<ScheduleTreeElemFilter>()) {
       domain = domain.intersect(filterElem->filter_);
     } else if (auto extensionElem = anc->elemAs<ScheduleTreeElemExtension>()) {
@@ -133,6 +138,12 @@ isl::union_set activeDomainPoints(
     }
   }
   return domain;
+}
+
+isl::union_set activeDomainPointsBelow(
+    const ScheduleTree* root,
+    const ScheduleTree* node) {
+  return activeDomainPoints(root, node, true);
 }
 
 vector<ScheduleTree*> collectScheduleTreesPath(
