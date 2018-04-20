@@ -26,7 +26,7 @@ jobs:
 
       - restore_cache:
           keys:
-            - v1-aten-{{ checksum ".git/modules/third-party/ATen/HEAD" }}-{{ checksum "build.sh" }}-{{ checksum ".circleci/config.yml" }}-{{ arch }}-1404
+            - v1-pytorch-{{ checksum ".git/modules/third-party/pytorch/HEAD" }}-{{ checksum "build.sh" }}-{{ checksum ".circleci/config.yml" }}-{{ arch }}-1404
 
       - restore_cache:
           keys:
@@ -68,7 +68,7 @@ jobs:
             - third-party/caffe2/build_host_protoc
 
       - save_cache:
-          key: v1-aten-{{ checksum ".git/modules/third-party/ATen/HEAD" }}-{{ checksum "build.sh" }}-{{ checksum ".circleci/config.yml" }}-{{ arch }}-1404
+          key: v1-aten-{{ checksum ".git/modules/third-party/pytorch/HEAD" }}-{{ checksum "build.sh" }}-{{ checksum ".circleci/config.yml" }}-{{ arch }}-1404
           paths:
             - third-party-install/share/ATen
             - third-party-install/include/ATen
@@ -78,9 +78,9 @@ jobs:
             - third-party-install/include/THCUNN
             - third-party-install/include/THNN
             - third-party-install/include/THS
+            - third-party-install/include/cpuinfo.h
             - third-party-install/lib/libATen.so
-            - third-party-install/lib/libATen.so.1
-            - third-party/ATen/build/src/ATen/test
+            - third-party/pytorch/aten/build/src/ATen/test/
 
       - save_cache:
           key: v1-isl-{{ checksum ".git/modules/third-party/islpp/HEAD" }}-{{ checksum "build.sh" }}-{{ checksum ".circleci/config.yml" }}-{{ arch }}-1404
@@ -178,7 +178,7 @@ jobs:
             - third-party-install/lib/libcaffe2_gpu.so
 
       - save_cache:
-          key: v1-aten-{{ checksum ".git/modules/third-party/ATen/HEAD" }}-{{ checksum "build.sh" }}-{{ checksum ".circleci/config.yml" }}-{{ arch }}-1604
+          key: v1-aten-{{ checksum ".git/modules/third-party/pytorch/HEAD" }}-{{ checksum "build.sh" }}-{{ checksum ".circleci/config.yml" }}-{{ arch }}-1604
           paths:
             - third-party-install/share/ATen
             - third-party-install/include/ATen
@@ -188,9 +188,9 @@ jobs:
             - third-party-install/include/THCUNN
             - third-party-install/include/THNN
             - third-party-install/include/THS
+            - third-party-install/include/cpuinfo.h
             - third-party-install/lib/libATen.so
-            - third-party-install/lib/libATen.so.1
-            - third-party/ATen/build/src/ATen/test
+            - third-party/pytorch/aten/build/src/ATen/test/
 
       - save_cache:
           key: v1-isl-{{ checksum ".git/modules/third-party/islpp/HEAD" }}-{{ checksum "build.sh" }}-{{ checksum ".circleci/config.yml" }}-{{ arch }}-1604

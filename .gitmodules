@@ -12,6 +12,9 @@
 	url = https://github.com/halide/Halide.git
 
 # Mainstream branches, we don't modify those
+[submodule "third-party/pytorch"]
+	path = third-party/pytorch
+	url = https://github.com/pytorch/pytorch.git
 [submodule "third-party/caffe2"]
 	path = third-party/caffe2
 	url = https://github.com/caffe2/caffe2.git
@@ -21,9 +24,6 @@
 [submodule "third-party/glog"]
 	path = third-party/glog
 	url = https://github.com/google/glog.git
-[submodule "third-party/ATen"]
-	path = third-party/ATen
-	url = https://github.com/zdevito/aten.git
 [submodule "third-party/dlpack"]
 	path = third-party/dlpack
 	url = https://github.com/dmlc/dlpack.git
